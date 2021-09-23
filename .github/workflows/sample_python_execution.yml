@@ -22,6 +22,7 @@ jobs:
           python-version: 3.8 #install the python needed
       - name: execute py script # run the run.py to get the latest data
         run: |
+          pip install requests
           python slack_message.py
         env:
           SLACK_WEBHOOK_TEST_CHANNEL: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }} # if run.py requires passwords..etc, set it as secrets
