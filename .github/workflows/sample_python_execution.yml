@@ -1,0 +1,27 @@
+name: sample_slack_notifier
+    
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          python slack_message.py
+        env:
+          SLACK_WEBHOOK_TEST_CHANNEL: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }} # if run.py requires passwords..etc, set it as secrets
