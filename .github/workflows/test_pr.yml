@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: 'echo "No build required"'
-      - run: exit 1
+      - run: exit 0
