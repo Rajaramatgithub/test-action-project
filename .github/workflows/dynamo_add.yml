@@ -1,0 +1,27 @@
+name: Build Wheel
+
+on:
+  push:
+
+jobs:
+  add_entry_dynamo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v13
+      id: verify-changed-files
+    
+    - name: Get changed file input
+      id: changed-files-specific
+      uses: tj-actions/changed-files@v35
+      with:
+        files: input/tinuiti_mobiusos_spreadsheet_ingestion
+
+    - name: Trigger upload
+      if: steps.changed-files-specific.outputs.any_changed == 'true'
+      run: |
+        python3 dynamo_entries.py

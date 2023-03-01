@@ -1,0 +1,1 @@
+print("Entering data into dynamo")
