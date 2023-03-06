@@ -13,4 +13,4 @@ jobs:
       env:
         MY_SECRET: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }}
       run: |
-        echo "The secret is $MY_SECRET"
+        echo "The secret is ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }}""
