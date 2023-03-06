@@ -11,6 +11,6 @@ jobs:
     steps:
     - name: Run a command with a secret
       env:
-        MY_SECRET: ${{ env.SLACK_WEBHOOK_TEST_CHANNEL }}
+        MY_SECRET: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }}
       run: |
         echo "The secret is $MY_SECRET"
