@@ -11,6 +11,6 @@ jobs:
     steps:
     - name: Run a command with a secret
       env:
-        MY_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        MY_SECRET: ${{ env.AWS_SECRET_ACCESS_KEY }}
       run: |
         echo "The secret is $MY_SECRET"
